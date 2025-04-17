@@ -9,8 +9,6 @@ public class PropRandomizer : MonoBehaviour
     [SerializeField] GameObject PropChunks;
     [SerializeField] float mapRadius;
 
-    List<GameObject> propLocations = new List<GameObject>();
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
