@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     Rigidbody2D rb;
 
-    [HideInInspector] public Vector2 moveDir;
+    [HideInInspector] public Vector3 moveDir;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
-        moveDir = new Vector2(inputX, inputY);
+        moveDir = new Vector3(inputX, inputY);
     }
 
     void Movement()

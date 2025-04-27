@@ -14,7 +14,7 @@ public class MapController : MonoBehaviour
     [SerializeField] float deactiveInterval;
 
     PlayerMovement playerMovement;
-    Vector2 newChunkPos;
+    Vector3 newChunkPos;
     List<GameObject> TerrianChunks;
     float deactiveTimer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,7 +34,7 @@ public class MapController : MonoBehaviour
     void TerrianGenerate()
     {
         //预期位置是移动方向+地图块大小
-        newChunkPos = new Vector2(player.position.x, player.position.y) + playerMovement.moveDir * MapCheckRadius;
+        newChunkPos = new Vector3(player.position.x, player.position.y) + playerMovement.moveDir * MapCheckRadius;
         newChunkPos = AlignNewChunkPos(newChunkPos, MapCheckRadius * 2);
         Debug.Log("newChunkPos=" + newChunkPos);
         Collider2D[] existedChunks = Physics2D.OverlapCircleAll(newChunkPos, MapCheckRadius / 2, terrianLayer);
@@ -47,11 +47,11 @@ public class MapController : MonoBehaviour
     }
 
     //对齐生成的地图位置到网格
-    Vector2 AlignNewChunkPos(Vector2 pos, float gridSize)
+    Vector3 AlignNewChunkPos(Vector3 pos, float gridSize)
     {
         float x = Mathf.Round(pos.x / gridSize) * gridSize;
         float y = Mathf.Round(pos.y / gridSize) * gridSize;
-        return new Vector2(x, y);
+        return new Vector3(x, y);
     }
 
     //检测距离过远的地图块并禁用
@@ -61,7 +61,7 @@ public class MapController : MonoBehaviour
         {
             foreach (GameObject chunk in TerrianChunks)
             {
-                if (Vector2.Distance(player.position, chunk.transform.position) > deactiveDist)
+                if (Vector3.Distance(player.position, chunk.transform.position) > deactiveDist)
                 {
                     chunk.SetActive(false);
                     TerrianChunks.Remove(chunk);
