@@ -36,7 +36,6 @@ public class MapController : MonoBehaviour
         //预期位置是移动方向+地图块大小
         newChunkPos = new Vector3(player.position.x, player.position.y) + playerMovement.moveDir * MapCheckRadius;
         newChunkPos = AlignNewChunkPos(newChunkPos, MapCheckRadius * 2);
-        Debug.Log("newChunkPos=" + newChunkPos);
         Collider2D[] existedChunks = Physics2D.OverlapCircleAll(newChunkPos, MapCheckRadius / 2, terrianLayer);
         if (existedChunks.Length == 0)
         {

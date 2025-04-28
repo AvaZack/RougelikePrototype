@@ -451,11 +451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55551a9dc12a0b469df2fba0dc7195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1198580052185715897, guid: 526391a476dae5b4cb18951fcd30b4dd, type: 3}
+  prefab: {fileID: 0}
   attack: 0
-  cooldown: 0.5
+  cooldown: 1
   projectilePrefab: {fileID: 1198580052185715897, guid: 526391a476dae5b4cb18951fcd30b4dd, type: 3}
-  speed: 20
+  speed: 10
   pierce: 0
 --- !u!1 &2102494284
 GameObject:

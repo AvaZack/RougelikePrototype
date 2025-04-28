@@ -18,7 +18,7 @@ public class PropRandomizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //随机放置物品

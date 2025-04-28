@@ -20,27 +20,26 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        dir = getToMouseDir();
         if (cooldownTimer > cooldown)
         {
             Attack();
             cooldownTimer = 0;
         }
         cooldownTimer += Time.deltaTime;
-
-        dir = getToMouseDir();
-        Debug.Log("dir=" + dir);
     }
 
     protected virtual void Attack()
     {
-
+        Debug.Log("Weapon attack");
     }
 
+    // 获取朝向鼠标的方向
     private Vector3 getToMouseDir()
     {
         Vector3 mousePositionScreen = Input.mousePosition;
         Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
-        return mousePositionWorld - transform.position;
+        return (mousePositionWorld - transform.position).normalized;
     }
 
 }

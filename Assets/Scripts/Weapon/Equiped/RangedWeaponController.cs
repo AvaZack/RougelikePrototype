@@ -9,12 +9,10 @@ public class RangedWeaponController : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        GameObject obj = Instantiate(projectilePrefab);
-        obj.transform.position = transform.position;
+        // TODO: 建立对象池
+        GameObject obj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         Projectile projectile = obj.GetComponent<Projectile>();
-        projectile.speed = speed;
-        projectile.pierce = pierce;
-        projectile.dir = dir;
+        projectile.Initialize(speed, pierce, dir);
     }
 
     private void OnDrawGizmos()
