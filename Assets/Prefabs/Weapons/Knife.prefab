@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5654139236290060755}
   - component: {fileID: 3510690382902883135}
   - component: {fileID: 181815334438594730}
-  - component: {fileID: 6885245455584363513}
+  - component: {fileID: 5169377435475090164}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 478903035
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -13136571747722450, guid: d4f010d0f2291bb4d903bbcba58db38c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,24 +103,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   pierce: 0
-  dir: {x: 0, y: 0}
+  dir: {x: 0, y: 0, z: 0}
   destroyAfter: 3
---- !u!50 &6885245455584363513
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!60 &5169377435475090164
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198580052185715897}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -128,7 +122,49 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71875, y: 0.75}
+    newSize: {x: 0.71875, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.3604468, y: -0.2875508}
+      - {x: -0.359375, y: -0.375}
+      - {x: -0.27508223, y: -0.36852515}
+      - {x: -0.20271552, y: -0.30535692}
+      - {x: -0.033801556, y: -0.14626372}
+      - {x: 0.16959023, y: 0.056884527}
+      - {x: 0.18276596, y: 0.058766782}
+      - {x: 0.19185507, y: 0.07379347}
+      - {x: 0.30675662, y: 0.19075859}
+      - {x: 0.35457075, y: 0.25645375}
+      - {x: 0.3547089, y: 0.2635594}
+      - {x: 0.3682741, y: 0.34228197}
+      - {x: 0.359375, y: 0.375}
+      - {x: 0.31567335, y: 0.37899002}
+      - {x: -0.13456881, y: -0.044740975}
+      - {x: -0.28220284, y: -0.19573009}
+  m_UseDelaunayMesh: 0

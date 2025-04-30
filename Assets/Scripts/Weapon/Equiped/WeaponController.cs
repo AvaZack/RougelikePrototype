@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] protected GameObject prefab;
-    [SerializeField] protected float attack;
-    [SerializeField] protected float cooldown;
+    [Header("Weapon stats")]
+    public WeaponScriptableObj weaponData;
 
     protected Vector3 dir;
 
@@ -21,7 +20,7 @@ public class WeaponController : MonoBehaviour
     protected virtual void Update()
     {
         dir = getToMouseDir();
-        if (cooldownTimer > cooldown)
+        if (cooldownTimer > weaponData.Cooldown)
         {
             Attack();
             cooldownTimer = 0;
