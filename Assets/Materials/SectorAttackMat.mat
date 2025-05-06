@@ -43,11 +43,11 @@ Material:
     m_Floats:
     - _Angle: 120
     - _EnableExternalAlpha: 0
-    - _Radius: 4
+    - _Radius: 5
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Direction: {r: -0.7738088, g: 0.63341933, b: 0, a: 0}
+    - _Direction: {r: -0.31570002, g: 0.9488591, b: 0, a: 0}
     - _MainColor: {r: 1, g: 0, b: 0, a: 0.5}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

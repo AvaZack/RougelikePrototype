@@ -29,13 +29,15 @@ public class MeleeWeaponController : WeaponController
 
     }
 
+
+
     bool IsInSector(Vector3 targetPos)
     {
         // 1. 计算方向向量（从中心指向目标）
         Vector3 dirToTarget = (targetPos - transform.position).normalized;
 
-        // 2. 计算与扇形方向的夹角
-        float currentAngle = Vector3.Angle(transform.position, dirToTarget);
+        // 2. 计算与鼠标方向扇形方向的夹角
+        float currentAngle = Vector3.Angle(toMouseDir, dirToTarget);
         Debug.Log("currentAngle=" + currentAngle);
 
         // 3. 判断角度和距离

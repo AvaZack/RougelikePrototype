@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203423734}
   - component: {fileID: 203423735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MapController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,11 +168,9 @@ MonoBehaviour:
   TerrianChunk: {fileID: 5065878952970089119, guid: 43d2c48ea4959d347bd10dd267b72250, type: 3}
   deactiveDist: 50
   deactiveInterval: 1
-  enemyPrefabs:
-  - {fileID: 4298840712441265776, guid: e4c4076f8659ad14fbb75035646f173a, type: 3}
-  enemiesPerWave: 5
-  spawnRange: 100
-  spawnInterval: 5
+  terrianLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +420,18 @@ PrefabInstance:
       value: Quad
       objectReference: {fileID: 0}
     - target: {fileID: 7766837368568448904, guid: 06aa6874fe4d8a641a557bbff2f2a084, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766837368568448904, guid: 06aa6874fe4d8a641a557bbff2f2a084, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766837368568448904, guid: 06aa6874fe4d8a641a557bbff2f2a084, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766837368568448904, guid: 06aa6874fe4d8a641a557bbff2f2a084, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -471,6 +481,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7766837368568448904, guid: 06aa6874fe4d8a641a557bbff2f2a084, type: 3}
   m_PrefabInstance: {fileID: 709804821}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &860887936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860887937}
+  - component: {fileID: 860887938}
+  m_Layer: 7
+  m_Name: EnemySpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860887937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860887936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860887938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860887936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f095598e17a8b3249b45712c5b3ece08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2102494288}
+  enemyPrefabs:
+  - {fileID: 4298840712441265776, guid: e4c4076f8659ad14fbb75035646f173a, type: 3}
+  enemiesPerWave: 5
+  spawnRange: 30
+  spawnInterval: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1665514484
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,11 +579,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94236c1187ee355439bf3e71fc17a04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1.5
+  cooldown: 0.5
   damage: 20
   prefab: {fileID: 3577104897748751885, guid: f51064a41d7895443802352ae6922355, type: 3}
   attackAngle: 120
-  attackRange: 2
+  attackRange: 3
   attackFxMat: {fileID: 2100000, guid: 40165411b6e1cca46b4a705a293f99ba, type: 2}
 --- !u!1 &1991961209
 GameObject:
@@ -786,3 +849,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 2102494288}
   - {fileID: 203423734}
+  - {fileID: 860887937}
