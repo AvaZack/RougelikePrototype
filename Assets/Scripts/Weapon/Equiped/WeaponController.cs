@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [Header("Weapon stats")]
-    public WeaponScriptableObj weaponData;
+    [SerializeField] protected float cooldown;
+    [SerializeField] protected float damage;
 
-    protected Vector3 dir;
+    [SerializeField] protected GameObject prefab;
+
+    protected Vector3 toMouseDir;
 
     float cooldownTimer;
 
@@ -19,8 +21,8 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        dir = getToMouseDir();
-        if (cooldownTimer > weaponData.Cooldown)
+        toMouseDir = getToMouseDir();
+        if (cooldownTimer > cooldown)
         {
             Attack();
             cooldownTimer = 0;
@@ -38,6 +40,7 @@ public class WeaponController : MonoBehaviour
     {
         Vector3 mousePositionScreen = Input.mousePosition;
         Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
+        mousePositionWorld.z = transform.position.z;
         return (mousePositionWorld - transform.position).normalized;
     }
 

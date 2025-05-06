@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public float speed;
     public float pierce;
     public Vector3 dir;
-    public float destroyAfter = 2f;
+    public float destroyAfter = 3f;
     public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,9 +17,9 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += dir.normalized * speed * Time.deltaTime;
+        transform.position += dir * speed * Time.deltaTime;
         Destroy(gameObject, destroyAfter);
     }
 
@@ -30,19 +30,21 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle - 45, Vector3.forward);
     }
 
-    internal void Initialize(WeaponScriptableObj data)
+    internal void Initialize(float speed, int pierce, float damage)
     {
-        this.speed = data.Speed;
-        this.pierce = data.Pierce;
-        this.damage = data.Damage;
+        this.speed = speed;
+        this.pierce = pierce;
+        this.damage = damage;
     }
 
     internal void setDir(Vector3 dir)
     {
         this.dir = dir;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("projectile hit sth.");
         if (collision.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyController>().TakeDamage(damage);

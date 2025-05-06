@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2486017924987429094}
   - component: {fileID: 7138383410200292360}
   - component: {fileID: 3009768279376391043}
-  - component: {fileID: 6525261110740738781}
   - component: {fileID: 7158147987833490865}
+  - component: {fileID: 9017781558364360058}
+  - component: {fileID: 4086036204308097855}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -112,8 +113,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &6525261110740738781
-BoxCollider2D:
+--- !u!114 &7158147987833490865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298840712441265776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb85dc4fd98f064b9696e81ab6fcc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  maxHealth: 10
+  speed: 3
+--- !u!60 &9017781558364360058
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,11 +158,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.010352343, y: -0.03105706}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -156,20 +172,39 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74213225, y: 0.53617203}
-  m_EdgeRadius: 0
---- !u!114 &7158147987833490865
-MonoBehaviour:
+  m_Points:
+    m_Paths:
+    - - {x: 0.234375, y: 0.375}
+      - {x: -0.265625, y: 0.375}
+      - {x: -0.453125, y: 0.125}
+      - {x: -0.453125, y: -0.375}
+      - {x: 0.453125, y: -0.375}
+      - {x: 0.453125, y: 0.03125}
+  m_UseDelaunayMesh: 0
+--- !u!50 &4086036204308097855
+Rigidbody2D:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4298840712441265776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb85dc4fd98f064b9696e81ab6fcc95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  maxHealth: 10
-  speed: 8
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4

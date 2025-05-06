@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using NUnit.Framework;
@@ -6,22 +7,31 @@ using UnityEngine.Tilemaps;
 
 public class MapController : MonoBehaviour
 {
+    [Header("Terrian")]
     [SerializeField] Transform player;
-    [SerializeField] LayerMask terrianLayer;
     [SerializeField] float MapCheckRadius;
     [SerializeField] GameObject TerrianChunk;
     [SerializeField] float deactiveDist;
     [SerializeField] float deactiveInterval;
 
+    [Header("Enemy")]
+    [SerializeField] List<GameObject> enemyPrefabs;
+    [SerializeField] int enemiesPerWave;
+    [SerializeField] float spawnRange;
+    [SerializeField] float spawnInterval;
+
     PlayerMovement playerMovement;
     Vector3 newChunkPos;
     List<GameObject> TerrianChunks;
+    LayerMask terrianLayer;
     float deactiveTimer = 0;
+    float enemySpawnTimer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         TerrianChunks = new List<GameObject>();
+        terrianLayer = LayerMask.GetMask("Terrian");
     }
 
     // Update is called once per frame
@@ -29,6 +39,8 @@ public class MapController : MonoBehaviour
     {
         TerrianGenerate();
         CheckTooFarChunk();
+
+        EnemySpawn();
     }
 
     void TerrianGenerate()
@@ -58,22 +70,43 @@ public class MapController : MonoBehaviour
     {
         if (deactiveTimer > deactiveInterval)
         {
+            List<GameObject> chunksToRemove = new List<GameObject>();
             foreach (GameObject chunk in TerrianChunks)
             {
                 if (Vector3.Distance(player.position, chunk.transform.position) > deactiveDist)
                 {
                     chunk.SetActive(false);
-                    TerrianChunks.Remove(chunk);
+                    chunksToRemove.Add(chunk);
                 }
             }
+            TerrianChunks.RemoveAll(o => chunksToRemove.Contains(o));
             deactiveTimer = 0;
         }
         deactiveTimer += Time.deltaTime;
     }
 
+    void EnemySpawn()
+    {
+        enemySpawnTimer += Time.deltaTime;
+        if (enemySpawnTimer > spawnInterval)
+        {
+            for (int i = 0; i < enemiesPerWave; i++)
+            {
+                Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnRange;
+                Vector2 spawnPos = (Vector2)player.position + randomCircle;
+                int idx = Random.Range(0, enemyPrefabs.Count);
+                GameObject enemy = Instantiate(enemyPrefabs[idx], spawnPos, Quaternion.identity);
+                enemy.tag = "Enemy";
+                enemy.layer = LayerMask.GetMask("Enemy");
+            }
+            enemySpawnTimer = 0;
+        }
+    }
+
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(newChunkPos, MapCheckRadius / 2);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(newChunkPos, MapCheckRadius / 2);
     }
 }

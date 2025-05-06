@@ -22,8 +22,9 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("Enemy take damage=" + damage);
         health -= damage;
-        if (health <= 0) { 
+        if (health <= 0) {
             Destroy(gameObject);
         }
     }
