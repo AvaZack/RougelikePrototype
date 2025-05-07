@@ -13,7 +13,6 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] int enemiesPerWave;
     [SerializeField] float spawnRange;
     [SerializeField] float spawnInterval;
-    [SerializeField] LayerMask enemyLayer;
 
     float enemySpawnTimer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

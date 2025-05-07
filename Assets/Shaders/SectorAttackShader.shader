@@ -2,7 +2,7 @@ Shader "Custom/SectorEffect"
 {
     Properties
     {
-        _MainColor ("Main Color", Color) = (1,0,0,0.5)
+        _MainColor ("Main Color", Color) = (1,0,0,0)
         _Radius ("Radius", float) = 5
         _Angle ("Angle", float) = 60
         _Direction ("Direction", Vector) = (1,0,0,0)

@@ -13,7 +13,6 @@ public class MapController : MonoBehaviour
     [SerializeField] GameObject TerrianChunk;
     [SerializeField] float deactiveDist;
     [SerializeField] float deactiveInterval;
-    [SerializeField] LayerMask terrianLayer;
 
     PlayerMovement playerMovement;
     Vector3 newChunkPos;
@@ -38,11 +37,11 @@ public class MapController : MonoBehaviour
         //预期位置是移动方向+地图块大小
         newChunkPos = new Vector3(player.position.x, player.position.y) + playerMovement.moveDir * MapCheckRadius;
         newChunkPos = AlignNewChunkPos(newChunkPos, MapCheckRadius * 2);
-        Collider2D[] existedChunks = Physics2D.OverlapCircleAll(newChunkPos, MapCheckRadius / 2, terrianLayer);
+        Collider2D[] existedChunks = Physics2D.OverlapCircleAll(newChunkPos, MapCheckRadius / 2, 1 << LayerMask.NameToLayer("Terrian"));
         if (existedChunks.Length == 0)
         {
             GameObject newChunk = Instantiate(TerrianChunk, newChunkPos, Quaternion.identity);
-            newChunk.layer = terrianLayer;
+            newChunk.layer = LayerMask.NameToLayer("Terrian");
             Debug.Log("newChunk layer=" + newChunk.layer);
             TerrianChunks.Add(newChunk);
         }

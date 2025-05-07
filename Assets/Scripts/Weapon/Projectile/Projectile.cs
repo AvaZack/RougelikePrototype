@@ -48,7 +48,17 @@ public class Projectile : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyController>().TakeDamage(damage);
+            pierce--;
+            if (pierce <= 0) Destroy(gameObject);
         }
+
+        if (collision.CompareTag("BreakableProp"))
+        {
+            collision.GetComponent<BreakableProp>().TakeDamage(damage);
+            pierce--;
+            if (pierce <= 0) Destroy(gameObject);
+        }
+
     }
 
 }

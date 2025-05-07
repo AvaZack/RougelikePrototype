@@ -168,9 +168,6 @@ MonoBehaviour:
   TerrianChunk: {fileID: 5065878952970089119, guid: 43d2c48ea4959d347bd10dd267b72250, type: 3}
   deactiveDist: 50
   deactiveInterval: 1
-  terrianLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,9 +528,6 @@ MonoBehaviour:
   enemiesPerWave: 5
   spawnRange: 30
   spawnInterval: 3
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1665514484
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,12 +573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94236c1187ee355439bf3e71fc17a04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.5
+  cooldown: 1.5
   damage: 20
   prefab: {fileID: 3577104897748751885, guid: f51064a41d7895443802352ae6922355, type: 3}
   attackAngle: 120
   attackRange: 3
   attackFxMat: {fileID: 2100000, guid: 40165411b6e1cca46b4a705a293f99ba, type: 2}
+  attackFxLast: 0.3
 --- !u!1 &1991961209
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991961209}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c55551a9dc12a0b469df2fba0dc7195a, type: 3}
   m_Name: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7158147987833490865}
   - component: {fileID: 9017781558364360058}
   - component: {fileID: 4086036204308097855}
+  - component: {fileID: 5674417691982139850}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  maxHealth: 10
+  maxHealth: 50
   speed: 3
 --- !u!60 &9017781558364360058
 PolygonCollider2D:
@@ -208,3 +209,15 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &5674417691982139850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298840712441265776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fe9f1a762cc274bbe69ed75e5f6dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
