@@ -14,14 +14,14 @@ public class MapController : MonoBehaviour
     [SerializeField] float deactiveDist;
     [SerializeField] float deactiveInterval;
 
-    PlayerMovement playerMovement;
+    PlayerController playerMovement;
     Vector3 newChunkPos;
     List<GameObject> TerrianChunks;
     float deactiveTimer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerMovement = FindAnyObjectByType<PlayerMovement>();
+        playerMovement = FindAnyObjectByType<PlayerController>();
         TerrianChunks = new List<GameObject>();
     }
 

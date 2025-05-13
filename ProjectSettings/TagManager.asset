@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - BreakableProp
-  - Pickup
+  - Loot
   layers:
   - Default
   - TransparentFX
@@ -16,7 +16,7 @@ TagManager:
   - UI
   - Terrian
   - Enemy
-  - Pickup
+  - Loot
   - 
   - 
   - 

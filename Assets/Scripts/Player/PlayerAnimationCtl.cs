@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     Animator animator;
-    PlayerMovement movement;
+    PlayerController movement;
     SpriteRenderer spriteRenderer;
     bool isFacingRight;
 
@@ -11,7 +11,7 @@ public class PlayerAnimator : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

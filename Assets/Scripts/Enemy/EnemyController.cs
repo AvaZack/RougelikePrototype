@@ -7,11 +7,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] protected float speed;
 
     float health;
+    DropController dropController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = maxHealth;
+        dropController = GetComponent<DropController>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Enemy take damage=" + damage);
         health -= damage;
         if (health <= 0) {
+            dropController.OnDeath();
             Destroy(gameObject);
         }
     }

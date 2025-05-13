@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -937711581440110292}
   - component: {fileID: -1232633047705501158}
   - component: {fileID: -682317445702386182}
+  - component: {fileID: -1650113053833922304}
   m_Layer: 6
   m_Name: terrain_4
   m_TagString: BreakableProp
@@ -176,3 +177,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
+--- !u!114 &-1650113053833922304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516781471590533205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a03378e058923f419bc7dd098518480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalDropChance: 0.5
+  useIndependentProbability: 1
+  dropTable:
+  - itemPrefab: {fileID: 2095650676979860277, guid: 9fd2f7010c7207e4fac13cc7b55caf35, type: 3}
+    dropChance: 0.151
+    dropAmount: {x: 0, y: 0}
+  positionOffset: {x: 0, y: 0.5}
+  dropRadius: 1

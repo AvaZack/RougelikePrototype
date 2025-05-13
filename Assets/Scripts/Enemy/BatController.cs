@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class BatController : EnemyController
 {
-    private PlayerMovement player;
+    private PlayerController player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
+        player = FindAnyObjectByType<PlayerController>();
     }
 
     // Update is called once per frame

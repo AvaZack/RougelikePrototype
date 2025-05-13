@@ -643,8 +643,8 @@ GameObject:
   - component: {fileID: 2102494286}
   - component: {fileID: 2102494285}
   - component: {fileID: 2102494290}
-  - component: {fileID: 2102494289}
   - component: {fileID: 2102494291}
+  - component: {fileID: 2102494292}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -788,20 +788,6 @@ Transform:
   - {fileID: 1991961210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2102494289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102494284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c2618423338d546b41b3b00e135bd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveDir: {x: 0, y: 0, z: 0}
 --- !u!95 &2102494290
 Animator:
   serializedVersion: 7
@@ -836,6 +822,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59c7fd3c1873a042be30ad880524032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2102494292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102494284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7726c47b82c23d44cb300f1f3b135349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  moveDir: {x: 0, y: 0, z: 0}
+  maxHealth: 100
+  pickupRange: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
