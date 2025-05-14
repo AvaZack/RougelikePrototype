@@ -12,11 +12,9 @@ public class CollectibleItem : MonoBehaviour
     private Transform player;
     private bool isAttracting = false;
 
-    public ParticleSystem collectEffect;
-
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = FindAnyObjectByType<PlayerController>().transform;
     }
 
     void Update()
@@ -38,12 +36,6 @@ public class CollectibleItem : MonoBehaviour
             journey += Time.deltaTime * flySpeed;
             transform.position = Vector3.Lerp(startPos, player.position, journey);
             yield return null;
-        }
-
-        if (collectEffect != null)
-        {
-            collectEffect.Play();
-            yield return new WaitForSeconds(collectEffect.main.duration);
         }
 
         Destroy(gameObject);

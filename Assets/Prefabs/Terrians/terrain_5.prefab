@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a03378e058923f419bc7dd098518480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDropChance: 0.5
-  useIndependentProbability: 1
+  globalDropChance: 1
+  useIndependentProbability: 0
   dropTable:
   - itemPrefab: {fileID: 2095650676979860277, guid: 9fd2f7010c7207e4fac13cc7b55caf35, type: 3}
-    dropChance: 0.151
-    dropAmount: {x: 0, y: 0}
+    dropChance: 0.514
+    dropAmount: {x: 1, y: 1}
   positionOffset: {x: 0, y: 0.5}
   dropRadius: 1

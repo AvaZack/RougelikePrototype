@@ -7,11 +7,14 @@ public class BreakableProp : MonoBehaviour
     float health;
     DropController dropController;
 
+    void Awake()
+    {
+        dropController = GetComponent<DropController>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = maxHealth;
-        dropController = GetComponent<DropController>();
     }
 
     // Update is called once per frame

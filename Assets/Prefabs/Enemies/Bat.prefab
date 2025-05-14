@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7158147987833490865}
   - component: {fileID: 9017781558364360058}
   - component: {fileID: 4086036204308097855}
-  - component: {fileID: 553951372635341929}
   - component: {fileID: 6256752029224989289}
   m_Layer: 0
   m_Name: Bat
@@ -130,6 +129,7 @@ MonoBehaviour:
   damage: 5
   maxHealth: 50
   speed: 3
+  attackRadius: 3
 --- !u!60 &9017781558364360058
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -210,21 +210,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &553951372635341929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4298840712441265776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb85dc4fd98f064b9696e81ab6fcc95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  maxHealth: 50
-  speed: 4
 --- !u!114 &6256752029224989289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,14 +222,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a03378e058923f419bc7dd098518480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalDropChance: 0.5
-  useIndependentProbability: 1
+  globalDropChance: 1
+  useIndependentProbability: 0
   dropTable:
   - itemPrefab: {fileID: 2095650676979860277, guid: 9fd2f7010c7207e4fac13cc7b55caf35, type: 3}
-    dropChance: 0.434
-    dropAmount: {x: 0, y: 0}
+    dropChance: 0.213
+    dropAmount: {x: 1, y: 1}
   - itemPrefab: {fileID: 9070614555386846286, guid: c6270f6f0b122e545af8117703ed6966, type: 3}
-    dropChance: 0.463
-    dropAmount: {x: 0, y: 0}
+    dropChance: 0.518
+    dropAmount: {x: 1, y: 1}
   positionOffset: {x: 0, y: 0.5}
   dropRadius: 1

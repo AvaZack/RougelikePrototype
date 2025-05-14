@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,13 @@ public class PlayerController : MonoBehaviour
     float currentHealth;
     float currentExp;
     int currentLevel;
+
+    [Header("Damage")]
+    [SerializeField] float knockbackForce = 5f;
+    [SerializeField] float knockbackDuration = 0.2f;
+    [SerializeField] float invincibleTime = 1.5f;
+    bool isInvincible;
+    
 
     [Header("Pickup")]
     [SerializeField] float pickupRange;
@@ -62,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     void ApplyItemEffect(CollectibleItem item)
     {
+        Debug.Log("collect " + item.itemType + " value " + item.value);
         switch (item.itemType)
         {
             case CollectibleItem.ItemType.Health:
@@ -71,7 +80,6 @@ public class PlayerController : MonoBehaviour
                 IncreaseExp(item.value);
                 break;
             case CollectibleItem.ItemType.Coin:
-                Debug.Log($"»ñµÃ½ð±Ò£º{item.value}");
                 break;
         }
     }
@@ -89,7 +97,8 @@ public class PlayerController : MonoBehaviour
     {
         currentExp += exp;
         float levelUpExp = GetLevelUpExp(currentLevel);
-        if (currentExp >= levelUpExp) {
+        if (currentExp >= levelUpExp)
+        {
             LevelUp();
             currentExp -= levelUpExp;
         }
@@ -116,6 +125,39 @@ public class PlayerController : MonoBehaviour
         if (40 <= level && level < 50)
             return 900;
         return 1000;
+    }
+
+    public void TakeDamage(Transform from, float damage)
+    {
+        if (isInvincible)
+            return;
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Time.timeScale = 0;
+            ShowGameOverUI();
+        }
+        StartCoroutine(KnockbackCoroutine(from));
+    }
+
+    IEnumerator InvincibleRecover()
+    {
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
+    }
+
+    IEnumerator KnockbackCoroutine(Transform target)
+    {
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        rb.AddForce(-direction * knockbackForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(knockbackDuration);
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    private void ShowGameOverUI()
+    {
+        //
     }
 
     void OnDrawGizmosSelected()

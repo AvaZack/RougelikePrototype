@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5816d581e2531419257a267ac2f28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractRadius: 3
-  flySpeed: 5
+  attractRadius: 5
+  flySpeed: 2
   itemType: 0
   value: 10
-  collectEffect: {fileID: 0}
+  collectEffect: {fileID: 1042357757853389371, guid: 88340535c076f904dbd5aaecbfd8122e, type: 3}
