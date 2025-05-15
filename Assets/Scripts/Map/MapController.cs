@@ -42,7 +42,6 @@ public class MapController : MonoBehaviour
         {
             GameObject newChunk = Instantiate(TerrianChunk, newChunkPos, Quaternion.identity);
             newChunk.layer = LayerMask.NameToLayer("Terrian");
-            Debug.Log("newChunk layer=" + newChunk.layer);
             TerrianChunks.Add(newChunk);
         }
     }

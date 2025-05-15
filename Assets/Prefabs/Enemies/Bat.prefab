@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2486017924987429094}
   - component: {fileID: 7138383410200292360}
   - component: {fileID: 3009768279376391043}
-  - component: {fileID: 7158147987833490865}
   - component: {fileID: 9017781558364360058}
   - component: {fileID: 4086036204308097855}
+  - component: {fileID: 7158147987833490865}
   - component: {fileID: 6256752029224989289}
   m_Layer: 0
   m_Name: Bat
@@ -114,22 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7158147987833490865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4298840712441265776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb85dc4fd98f064b9696e81ab6fcc95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  maxHealth: 50
-  speed: 3
-  attackRadius: 3
 --- !u!60 &9017781558364360058
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -191,7 +175,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4298840712441265776}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -210,6 +194,22 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &7158147987833490865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298840712441265776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb85dc4fd98f064b9696e81ab6fcc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  maxHealth: 30
+  speed: 3
+  attackRadius: 0.5
 --- !u!114 &6256752029224989289
 MonoBehaviour:
   m_ObjectHideFlags: 0

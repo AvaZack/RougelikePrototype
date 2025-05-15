@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("BaseComponents")]
+    protected Animator animator;
+
     [SerializeField] float damage;
     [SerializeField] float maxHealth;
     [SerializeField] protected float speed;
@@ -11,24 +14,24 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         dropController = GetComponent<DropController>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         PlayerDetect();
     }
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy take damage=" + damage);
         health -= damage;
         if (health <= 0)
         {
@@ -40,8 +43,9 @@ public class EnemyController : MonoBehaviour
     //TO BE IMPLEMENTED
     void PlayerDetect()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position,attackRadius,1<<LayerMask.NameToLayer("Player"));
-        foreach (Collider2D hit in hits) {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Player"));
+        foreach (Collider2D hit in hits)
+        {
             if (hit.CompareTag("Player"))
             {
                 hit.GetComponent<PlayerController>().TakeDamage(transform, damage);
@@ -49,9 +53,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

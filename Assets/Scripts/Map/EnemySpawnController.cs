@@ -39,7 +39,6 @@ public class EnemySpawnController : MonoBehaviour
                 GameObject enemy = Instantiate(enemyPrefabs[idx], spawnPos, Quaternion.identity);
                 enemy.tag = "Enemy";
                 enemy.layer = LayerMask.NameToLayer("Enemy");
-                Debug.Log("enemy tag=" + enemy.tag + " layer=" + enemy.layer);
             }
             enemySpawnTimer = 0;
         }

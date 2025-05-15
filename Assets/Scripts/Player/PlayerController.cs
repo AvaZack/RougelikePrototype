@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("BaseComponent")]
+    SpriteRenderer sr;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed;
     Rigidbody2D rb;
@@ -20,9 +23,11 @@ public class PlayerController : MonoBehaviour
     [Header("Damage")]
     [SerializeField] float knockbackForce = 5f;
     [SerializeField] float knockbackDuration = 0.2f;
-    [SerializeField] float invincibleTime = 1.5f;
+    [SerializeField] float invincibleDuration = 1.5f;
     bool isInvincible;
-    
+    float invincibleTimer;
+    Material flashMaterial;
+    Material originMaterial;
 
     [Header("Pickup")]
     [SerializeField] float pickupRange;
@@ -31,8 +36,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         currentLevel = 1;
+
+        isInvincible = false;
+        flashMaterial = new Material(Shader.Find("Custom/Flash"));
+        originMaterial = sr.material;
     }
 
     // Update is called once per frame
@@ -44,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        InvincibleCountDown();
     }
 
     void InputManagement()
@@ -59,18 +70,18 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = moveDir * moveSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        CollectibleItem item = collision.GetComponent<CollectibleItem>();
-        if (item != null)
-        {
-            ApplyItemEffect(item);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    CollectibleItem item = collision.GetComponent<CollectibleItem>();
+    //    if (item != null)
+    //    {
+    //        ApplyItemEffect(item);
+    //    }
+    //}
 
-    void ApplyItemEffect(CollectibleItem item)
+    public void ApplyItemEffect(CollectibleItem item)
     {
-        Debug.Log("collect " + item.itemType + " value " + item.value);
+        //Debug.Log("collect " + item.itemType + " value " + item.value);
         switch (item.itemType)
         {
             case CollectibleItem.ItemType.Health:
@@ -131,33 +142,56 @@ public class PlayerController : MonoBehaviour
     {
         if (isInvincible)
             return;
+        Debug.Log("Player got damage,=" + damage);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Time.timeScale = 0;
-            ShowGameOverUI();
+            GameOver();
         }
-        StartCoroutine(KnockbackCoroutine(from));
+        isInvincible = true;
+        invincibleTimer = invincibleDuration;
+        KnockbackCoroutine(from);
+        StartCoroutine(ShowFlashEffect());
     }
 
-    IEnumerator InvincibleRecover()
+    void InvincibleCountDown()
     {
-        yield return new WaitForSeconds(invincibleTime);
-        isInvincible = false;
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
     }
 
-    IEnumerator KnockbackCoroutine(Transform target)
+    IEnumerator ShowFlashEffect()
+    {
+        while (isInvincible)
+        {
+            sr.material = flashMaterial;
+            flashMaterial.SetFloat("_FlashAmount", 0.7f);
+
+            yield return new WaitForSeconds(0.2f / 2);
+
+            flashMaterial.SetFloat("_FlashAmount", 0);
+            sr.material = originMaterial;
+
+            yield return new WaitForSeconds(0.2f / 2);
+        }
+        sr.material = originMaterial;
+    }
+
+    void KnockbackCoroutine(Transform target)
     {
         Vector2 direction = (target.position - transform.position).normalized;
-
         rb.AddForce(-direction * knockbackForce, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(knockbackDuration);
-        rb.linearVelocity = Vector2.zero;
+        //yield return new WaitForSeconds(knockbackDuration);
+        //rb.linearVelocity = Vector2.zero;
     }
 
-    private void ShowGameOverUI()
+    private void GameOver()
     {
-        //
+        Debug.Log("You died");
     }
 
     void OnDrawGizmosSelected()

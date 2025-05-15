@@ -32,7 +32,7 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        Debug.Log("Weapon attack");
+        //Debug.Log("Weapon attack");
     }
 
     // 获取朝向鼠标的方向

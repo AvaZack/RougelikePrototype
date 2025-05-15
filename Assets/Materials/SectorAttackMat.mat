@@ -47,7 +47,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Direction: {r: -0.425241, g: 0.90508014, b: 0, a: 0}
+    - _Direction: {r: -0.79712695, g: 0.60381174, b: 0, a: 0}
     - _MainColor: {r: 1, g: 0, b: 0, a: 0.5}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

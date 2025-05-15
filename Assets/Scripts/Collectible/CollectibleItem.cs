@@ -9,17 +9,17 @@ public class CollectibleItem : MonoBehaviour
     public ItemType itemType;
     public int value = 10;
 
-    private Transform player;
+    private PlayerController player;
     private bool isAttracting = false;
 
     void Start()
     {
-        player = FindAnyObjectByType<PlayerController>().transform;
+        player = FindAnyObjectByType<PlayerController>();
     }
 
     void Update()
     {
-        if (!isAttracting && Vector2.Distance(transform.position, player.position) <= attractRadius)
+        if (!isAttracting && Vector2.Distance(transform.position, player.transform.position) <= attractRadius)
         {
             StartCoroutine(FlyToPlayer());
         }
@@ -34,10 +34,10 @@ public class CollectibleItem : MonoBehaviour
         while (journey <= 1f)
         {
             journey += Time.deltaTime * flySpeed;
-            transform.position = Vector3.Lerp(startPos, player.position, journey);
+            transform.position = Vector3.Lerp(startPos, player.transform.position, journey);
             yield return null;
         }
-
+        player.ApplyItemEffect(this);
         Destroy(gameObject);
     }
 

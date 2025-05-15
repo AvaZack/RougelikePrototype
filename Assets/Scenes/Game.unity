@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94236c1187ee355439bf3e71fc17a04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1.5
+  cooldown: 1
   damage: 20
   prefab: {fileID: 3577104897748751885, guid: f51064a41d7895443802352ae6922355, type: 3}
   attackAngle: 120
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55551a9dc12a0b469df2fba0dc7195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 0.5
   damage: 10
   prefab: {fileID: 1198580052185715897, guid: 526391a476dae5b4cb18951fcd30b4dd, type: 3}
   speed: 10
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 2102494292}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,6 +837,9 @@ MonoBehaviour:
   moveSpeed: 8
   moveDir: {x: 0, y: 0, z: 0}
   maxHealth: 100
+  knockbackForce: 5
+  knockbackDuration: 0.2
+  invincibleDuration: 1.5
   pickupRange: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

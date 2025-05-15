@@ -18,10 +18,10 @@ public class MeleeWeaponController : WeaponController
         StartCoroutine(ShowAttackFx());
 
         //攻击敌人
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, attackRange, 1 << LayerMask.NameToLayer("Enemy"));
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider2D enemy in enemies)
         {
-            Debug.Log("hit " + enemies.Length + " enemies");
+            //Debug.Log("hit " + enemies.Length + " enemies");
             if (enemy.CompareTag("Enemy") && IsInSector(enemy.transform.position))
             {
                 enemy.GetComponent<EnemyController>().TakeDamage(damage);
@@ -29,10 +29,10 @@ public class MeleeWeaponController : WeaponController
         }
 
         //可破坏地形
-        Collider2D[] props = Physics2D.OverlapCircleAll(transform.position, attackRange, 1 << LayerMask.NameToLayer("Terrian"));
+        Collider2D[] props = Physics2D.OverlapCircleAll(transform.position, attackRange, LayerMask.GetMask("Terrian"));
         foreach (Collider2D prop in props)
         {
-            Debug.Log("break " + props.Length + " props");
+            //Debug.Log("break " + props.Length + " props");
             if (prop.CompareTag("BreakableProp") && IsInSector(prop.transform.position))
             {
                 prop.GetComponent<BreakableProp>().TakeDamage(damage);
